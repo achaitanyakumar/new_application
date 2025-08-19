@@ -32,7 +32,7 @@ def filter_articles(articles):
 # Function to fetch news from APIs and cache results
 def fetch_news():
     global cached_news, last_fetch_time
-    if datetime.now() - last_fetch_time > timedelta(hours=1):  # Refresh every hour
+    if datetime.now() - last_fetch_time > timedelta(hours=1):  
         try:
             print("Fetching news...")
             # Fetch news from NewsAPI
@@ -86,7 +86,7 @@ def fetch_news():
             # Combine articles from all APIs
             cached_news = newsapi_articles + gnewsapi_articles + mediastack_articles + newsdata_articles
             cached_news = cached_news[:200]  
-            # Print total number of articles fetched
+          
             print(f"Total articles fetched and combined: {len(cached_news)}")
 
             
@@ -95,7 +95,7 @@ def fetch_news():
 
         except Exception as e:
             print(f"Exception fetching news: {e}")
-            cached_news = []  # Reset cached news in case of an error
+            cached_news = []  
 
         last_fetch_time = datetime.now()
 
@@ -181,5 +181,7 @@ def detect():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Use Render’s PORT or default to 5000 locally
+    app.run(host="0.0.0.0", port=port)
 
