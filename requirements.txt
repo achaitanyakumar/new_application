@@ -6,6 +6,7 @@ docx2txt==0.9
 filelock==3.19.1
 Flask==3.1.1
 fsspec==2025.7.0
+gunicorn==23.0.0
 hf-xet==1.1.7
 huggingface-hub==0.34.4
 idna==3.10
