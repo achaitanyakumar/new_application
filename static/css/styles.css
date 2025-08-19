@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/Home_background.avif');        
+    background-size: cover;
+    background-position: center;
+    background-repeat: round;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+body::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit; 
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    filter: blur(8px); 
+    z-index: -1; 
+}
+
+/* Summarization page background with blur */
+#summarization-page::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/image-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px); 
+    z-index: -1; 
+}
+
+/* Question Answering page background with blur */
+#qa-page::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/image-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px); 
+    z-index: -1; 
+}
+
+/* Fake News Detection page background with blur */
+#fake-news-page::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/image-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px); 
+    z-index: -1; 
+}
+
+/* Ensure these elements are relatively positioned */
+#summarization-page, #qa-page, #fake-news-page {
+    position: relative;
+    z-index: 1;
+}
+
+
+.navbar-nav .nav-item {
+    margin-left: 30px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    transition: background-color 0.3s;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+/* Active link styles */
+.navbar-nav .nav-item.active .nav-link {
+    background-color: #a1a2a1;
+    color: white;
+}
+
+/* Hover effect for nav links */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #a1a2a1;
+    color: white;
+}
+
+.search-btn {
+    background-color: #0056b3; 
+    color: white; 
+    border: none; 
+}
+
+.search-btn:hover {
+    background-color: #b30000; 
+    color: white; 
+    cursor: pointer; 
+}
+
+
+.dropdown-item:hover {
+    background-color: #ff0000; 
+    color: white;
+}
+
+.trending-title {
+    font-size: 2.3rem;
+    color: #000000;
+    font-family: Georgia, serif;
+    font-weight: 900;
+    padding-top : 0;
+    padding-bottom:15px;
+    padding-left: 25px;
+    position: relative;
+    text-shadow: 1px 1px 2px #fdffff;
+
+}
+
+.card {
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgb(0, 0, 0);
+}
+
+.card img {
+    border-radius: 10px 10px 0 0;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f8f6f6;
+}
+
+.card-body .btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    align-self: center;
+}
+
+.card-title a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}

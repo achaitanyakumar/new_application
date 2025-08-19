@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}News Summarization{% endblock %}
+{% block page_id %}summarization-page{% endblock %}
+
+{% block content %}
+<h2 class="text-center">News Summarization</h2>
+
+<form action="/summarize" method="POST" enctype="multipart/form-data" class="mt-4">
+    <div class="form-group">
+        <label for="text">Enter Text for Summarization:</label>
+        <textarea name="text" id="text" rows="6" class="form-control" placeholder="Enter your text here...">{{ request.form.get('text', '') }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="file">Or Upload a File (txt, pdf, docx):</label>
+        <input type="file" name="file" id="file" class="form-control-file">
+    </div>
+
+    <div class="form-group">
+        <label for="summary_type">Type of Summary:</label>
+        <select name="summary_type" id="summary_type" class="form-control" style="width: 12%; text-align-last: center;">
+            <option value="abstractive" {% if request.form.get('summary_type', 'abstractive') == 'abstractive' %}selected{% endif %}>Abstractive</option>
+            <option value="highlights" {% if request.form.get('summary_type') == 'highlights' %}selected{% endif %}>Highlights</option>
+        </select>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Summarize</button>
+    </div>
+</form>
+
+{% if summary %}
+<div class="mt-4">
+    <h3>Summarized Text:</h3>
+    <p class="alert alert-info">{{ summary }}</p>
+</div>
+{% endif %}
+{% endblock %}

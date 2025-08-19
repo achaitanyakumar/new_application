@@ -1,0 +1,8 @@
+Flask
+requests
+transformers
+torch
+python-dotenv
+docx2txt
+pypdf2
+sentencepiece

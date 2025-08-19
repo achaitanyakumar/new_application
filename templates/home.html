@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Home - NewsIQ{% endblock %}
+
+{% block content %}
+<h1 class="trending-title">
+    {% if is_search %}
+    Search Results🔍
+    {% elif category %}
+    {{ category }} News
+    {% else %}
+    Trending Stories📈
+    {% endif %}
+</h1>
+<div class="row">
+    {% if news_data and news_data|length > 0 %}
+    {% for article in news_data %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="{{ article.get('urlToImage') or url_for('static', filename='images/default-image.jpg') }}"
+                class="card-img-top" alt="News Image" />
+
+
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ article['url'] }}" target="_blank">{{ article['title'] }}</a></h5>
+                <p class="card-text">{{ article['description'] if article['description'] else "No description
+                    available." }}</p>
+                <a href="{{ article['url'] }}" target="_blank" class="btn btn-primary">Read more</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No news articles available at this time.</p>
+    {% endif %}
+</div>
+{% endblock %}

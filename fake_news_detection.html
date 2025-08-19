@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Fake News Detection{% endblock %}
+{% block page_id %}fake-news-page{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Fake News Detection</h2>
+
+<form action="/detect_fake_news" method="POST" enctype="multipart/form-data" class="mt-4">
+    <div class="form-group">
+        <label for="title">News Title:</label>
+        <input type="text" name="title" id="title" class="form-control" placeholder="Enter the news title here..." value="{{ title }}">
+    </div>
+
+    <div class="form-group">
+        <label for="text">News Content:</label>
+        <textarea name="text" id="text" rows="6" class="form-control" placeholder="Enter the news content here...">{{ text }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="file">Or Upload a File (txt, pdf, docx):</label>
+        <input type="file" name="file" id="file" class="form-control-file">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Detect</button>
+    </div>
+</form>
+
+{% if detection_result %}
+<div class="mt-4">
+    <h3>Result:</h3>
+    <p class="alert alert-info">{{ detection_result }}</p>
+</div>
+{% endif %}
+{% endblock %}

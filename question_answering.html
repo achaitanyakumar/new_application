@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Question Answering{% endblock %}
+{% block page_id %}qa-page{% endblock %}
+
+{% block content %}
+<h2 class="text-center">News Question Answering</h2>
+
+<form action="/ask_question" method="POST" enctype="multipart/form-data" class="mt-4">
+    <div class="form-group">
+        <label for="text">Enter Context:</label>
+        <textarea name="text" id="text" rows="5" class="form-control" placeholder="Enter your context here...">{{ request.form.get('text', '') }}</textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="file">Or Upload a File (txt, pdf, docx):</label>
+        <input type="file" name="file" id="file" class="form-control-file">
+    </div>
+    
+    <div class="form-group">
+        <label for="question">Enter Your Question:</label>
+        <input type="text" name="question" id="question" class="form-control" placeholder="Enter your question..." value="{{ request.form.get('question', '') }}">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Get Answer</button>
+    </div>
+</form>
+
+{% if answer %}
+<div class="mt-4">
+    <h3>Answer:</h3>
+    <p class="alert alert-info">{{ answer }}</p>
+</div>
+{% endif %}
+{% endblock %}
